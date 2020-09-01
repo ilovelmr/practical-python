@@ -1,8 +1,18 @@
 # Work Area
+<pre>
+제일 처음 할 일은 기존 디렉토리 fork 후 Clone
 
-Do all of your coding work here, in the `Work/` directory.  A number of starting
-files have been given (`bounce.py`, `mortgage.py`, `pcost.py`, etc.) along with
-their corresponding exercise number.
+이 코스를 수강할 준비로, 깃허브 https://github.com/dabeaz-course/practical-python 저장소를 포크할 것을 권장한다. 그런 다음, 다음 명령으로 로컬 머신에 클론한다.
 
-Many of the programs you write reference files found in the `Data/` directory.
-That is also located here.
+#git clone https://github.com/ilovelmr/practical-python
+
+* 디렉토리 구조
+모든 코딩 작업은 Work/ 디렉터리에서 수행하라. 이 디렉터리에는 Data/ 디렉터리가 있다. Data/ 디렉터리에는 이 코스에서 사용하는 여러 가지 데이터 파일과 스크립트가 있다. Data/에 있는 파일을 빈번하게 사용하게 된다. 코스의 연습 문제는 Work/ 디렉터리에 프로그램이 있다고 가정한다.
+
+* 학습 순서
+교재는 섹션 1부터 차례대로 완료해야 한다. 연습 문제는 이전 섹션의 코드를 기반으로 한다. 기존 코드를 조금씩 리팩터링하는 연습이 많다.
+
+* 해답 코드
+연습 문제의 완전한 해답 코드가 Solutions/ 디렉터리에 있다. 힌트가 필요할 때는 자유롭게 살펴보라. 그러나 최대의 학습효과를 위해서는 스스로 코드를 작성하려고 노력하라.
+
+</pre>
