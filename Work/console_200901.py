@@ -183,8 +183,9 @@ f = a[3:8]    # 'lo wo'
 g = a[-5:]    # 'world'
 
 
-#문자열 연산
-#이어붙이기(concatenation), 길이(length), 멤버십(membership), 복제(replication).
+# https://wikidocs.net/84384
+# 문자열 연산
+# 이어붙이기(concatenation), 길이(length), 멤버십(membership), 복제(replication).
 
 # 이어붙이기(+)
 a = 'Hello' + 'World'   # 'HelloWorld'
@@ -260,3 +261,107 @@ s.upper()              # 대문자로 변환
 #변수명 심벌(symbol)이 재할당되면, 그것은 새로 생성된 문자열을 가리킨다.
 #사용하지 않는 문자열은 삭제된다.
 '''
+
+
+# 연습 문제 1.18: 정규 표현식(Regular Expressions)
+#기본 문자열 연산은 고급 패턴 매칭을 지원하지 않지만, 파이썬의 re 모듈을 가지고 정규 표현식을 사용할 수 있다. 정규 표현식은 그 자체로 큰 주제이지만 여기서는 간단한 예를 들겠다.
+'''
+>>> text = 'Today is 3/27/2018. Tomorrow is 3/28/2018.'
+>>> # 날짜가 있는 곳을 모두 찾음
+>>> import re
+>>> re.findall(r'\d+/\d+/\d+', text)
+['3/27/2018', '3/28/2018']
+>>> # 날짜가 있는 곳을 모두 찾아 text로 교체
+>>> re.sub(r'(\d+)/(\d+)/(\d+)', r'\3-\1-\2', text)
+'Today is 2018-3-27. Tomorrow is 2018-3-28.'
+>>>
+re 모듈에 대한 자세한 정보는 공식 문서 https://docs.python.org/library/re.html을 참조하라.
+'''
+
+
+#파이썬 환경에 따라, 탭 자동완성을 통해 리스트를 볼 수 있을 수도 있다. 다음과 같이 해 보라.
+'''
+>>> s = 'hello world'
+>>> s.<tab key>
+>>>
+'''
+
+
+# https://wikidocs.net/84384
+# 1.5 LIST
+# 주의: 리스트는 수학 연산을 위해 설계한 것이 아니다.
+'''
+>>> nums = [1, 2, 3, 4, 5]
+>>> nums * 2
+[1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+>>> nums + [10, 11, 12, 13, 14]
+[1, 2, 3, 4, 5, 10, 11, 12, 13, 14]
+특히 리스트는 매트랩(MATLAB), 옥타브(Octave), R 등의 벡터나 행렬을 나타내지 않는다.
+그런 용도로 사용할 수 있는 패키지가 따로 있다.(예: numpy)
+'''
+
+
+# 연습 문제 1.25: 온갖 것들의 리스트
+# 리스트는 어떤 종류의 객체든 담을 수 있고, 다른 리스트를 담을 수도 있다(예: 중첩된 리스트). 다음과 같이 시도해보라.
+'''
+>>> nums = [101, 102, 103]
+>>> items = ['spam', symlist, nums]
+>>> items
+['spam', ['YHOO', 'RHT', 'HPQ', 'GOOG', 'AIG', 'AAPL', 'AA'], [101, 102, 103]]
+출력을 잘 들여다 보라. items는 세 개의 원소를 가진 리스트다. 첫 번째 원소는 문자열이지만,
+나머지 두 개의 원소는 리스트다.
+
+여러 가지 인덱싱 연산자를 사용해 중첩된 리스트의 항목에 액세스할 수 있다.
+
+>>> items[0]
+'spam'
+>>> items[0][0]
+'s'
+>>> items[1]
+['YHOO', 'RHT', 'HPQ', 'GOOG', 'AIG', 'AAPL', 'AA']
+>>> items[1][1]
+'RHT'
+>>> items[1][1][2]
+'T'
+>>> items[2]
+[101, 102, 103]
+>>> items[2][1]
+102
+>>>
+매우 복잡한 리스트 구조를 만드는 것이 기술적으로는 가능하지만, 단순하게 만드는 것이 좋다.
+리스트의 항목은 모두 같은 종류의 값으로 구성하는 것이 일반적이다.
+예를 들어, 숫자만으로 리스트를 구성하거나, 텍스트 문자열만으로 리스트를 구성한다.
+같은 리스트에 여러 종류의 데이터를 섞다보면 머리가 터질 수 있으니 될 수 있으면 피하자.
+'''
+
+
+#https://github.com/ilovelmr/practical-python/blob/master/Notes/01_Introduction/06_Files.md
+try :
+    with open('./Data/portfolio.csv', 'rt') as f:
+        x = 1
+        for line in f:
+            print(x, line, end="")
+            x = x + 1
+except:
+    print("An exception occurred")
+
+'''
+>>> f = open('./Work/Data/portfolio.csv', 'rt')
+>>> headers = next(f).split(",")
+>>> headers
+['name', 'shares', 'price\n']
+>>> for line in f:
+...     row = line.split(",")
+...     print (row)
+...
+['"AA"', '100', '32.20\n']
+['"IBM"', '50', '91.10\n']
+['"CAT"', '150', '83.44\n']
+['"MSFT"', '200', '51.23\n']
+['"GE"', '95', '40.37\n']
+['"MSFT"', '50', '65.10\n']
+['"IBM"', '100', '70.44\n']
+>>>
+'''
+
+# file 처리 중 CSV 파일을 다루는 건 Pandas https://pandas.pydata.org 가 있음.
